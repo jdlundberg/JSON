@@ -25,23 +25,29 @@ public class FileIO {
         
         try {
             
-            FileOutputStream statsFile = new FileOutputStream(playerBean.getFirstName() + " " + playerBean.getLastName() + ".txt");
-            
-            JSONOutputStream writeFile = new JSONOutputStream(statsFile);
-            
-            writeFile.writeObject(playerMap);
-            
-            System.out.println("Thank you, " + playerBean.getFirstName() + " " + playerBean.getLastName() + " has been added to the system.");
-            
-        }
-        
-        catch (Exception e) {
-            
             if (playerBean.getFirstName() == null || playerBean.getLastName() == null) {
                 
-                System.err.println("First name and last name cannot be null");
+                throw new NullPointerException();
                 
             }
+            
+            else {
+            
+                FileOutputStream statsFile = new FileOutputStream(playerBean.getFirstName() + " " + playerBean.getLastName() + ".txt");
+            
+                JSONOutputStream writeFile = new JSONOutputStream(statsFile);
+            
+                writeFile.writeObject(playerMap);
+            
+                System.out.println("Thank you, " + playerBean.getFirstName() + " " + playerBean.getLastName() + " has been added to the system.");
+            
+            }
+                
+        }
+        
+        catch (NullPointerException npe) {
+                
+            System.err.println("First name and last name cannot be null");
             
         }
         

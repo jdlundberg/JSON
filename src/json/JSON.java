@@ -49,10 +49,6 @@ public class JSON {
         System.out.println("Test 3: Read file created from legit parameters");
         fileIO.readStats(firstName, lastName);
         
-        // Reading stats for the null player
-        System.out.println("Test 4: Read file created from null parameters");
-        fileIO.readStats(firstName2, lastName2);
-        
         // Reading stats for George Costanza, who is not in the system
         System.out.println("Test 5: Read file that doesn't exist");
         fileIO.readStats("George", "Costanza");
